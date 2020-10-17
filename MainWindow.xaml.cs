@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RegistroDetallado_PrestamoMoras.UI.Registros;
 using RegistroDetallado_PrestamoMoras.Entidades;
-using RegistroDetallado_PrestamoMoras.UI.Consulta;
+using RegistroDetallado_PrestamoMoras.UI.Consultas;
 
 namespace RegistroDetallado_PrestamoMoras
 {
@@ -33,8 +33,8 @@ namespace RegistroDetallado_PrestamoMoras
         }
         private void rPrestamoButton_Click(object sender, RoutedEventArgs e)
         {
-            rPrestamo rPrestamo = new rPrestamo();
-            rPrestamo.Show();
+            rPrestamos rPrestamos = new rPrestamos();
+            rPrestamos.Show();
         }
 
         private void rMorasButton_Click(object sender, RoutedEventArgs e)
@@ -51,8 +51,8 @@ namespace RegistroDetallado_PrestamoMoras
 
         private void cPrestamoButton_Click(object sender, RoutedEventArgs e)
         {
-            cPrestamo cPrestamo = new cPrestamo();
-            cPrestamo.Show();
+            cPrestamos cPrestamos = new cPrestamos();
+            cPrestamos.Show();
         }
     }
 }

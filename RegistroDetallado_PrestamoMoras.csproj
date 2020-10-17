@@ -1,11 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<StartWorkingDirectory>$(MSBuildProjetDirectory)</StartWorkingDirectory>
+		<StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Borrar.png" />
+	  <None Remove="Resources\Buscar.png" />
+	  <None Remove="Resources\Guardar.png" />
+	  <None Remove="Resources\mas.png" />
+	  <None Remove="Resources\men.png" />
+	  <None Remove="Resources\Nuevo.png" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="3.1.9" />
@@ -16,11 +25,43 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Entidades\" />
 	  <Folder Include="Data\" />
-	  <Folder Include="DAL\" />
-	  <Folder Include="BLL\" />
-	  <Folder Include="UI\Cosultas\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\Borrar.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\Buscar.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\Guardar.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\mas.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\men.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\Nuevo.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

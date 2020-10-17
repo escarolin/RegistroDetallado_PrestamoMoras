@@ -59,6 +59,28 @@ namespace RegistroDetallado_PrestamoMoras.UI.Registros
             if (!Validar())
                 return;
 
+            //--------------------------------------------(Aqui van las exepciones)---------------------------------------
+            if (PersonasIdComboBox.Text == string.Empty)
+            {
+                MessageBox.Show("El campo Persona Id esta vacio.\n\nPorfavor seleccione una persona.", "Warning",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                PersonasIdComboBox.IsDropDownOpen = true;
+                return;
+            }
+
+            if (ConceptoTextBox.Text == string.Empty)
+            {
+                MessageBox.Show("El campo Concepto esta vacio.\n\nPorfavor escriba un concepto.", "Warning",
+                                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                ConceptoTextBox.SelectAll();
+                ConceptoTextBox.Focus();
+                return;
+            }
+
+            //------------------------------------------------------------------------------------------------------------
+
             var paso = PrestamosBLL.Guardar(this.prestamos);
 
             if (paso)
@@ -96,12 +118,12 @@ namespace RegistroDetallado_PrestamoMoras.UI.Registros
         {
             bool esValido = true;
 
-            if (ConceptoTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                MessageBox.Show("Transaccion Fallida", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            //if (ConceptoTextBox.Text.Length == 0)
+            //{
+            //    esValido = false;
+            //    MessageBox.Show("Transaccion Fallida", "Fallo",
+            //        MessageBoxButton.OK, MessageBoxImage.Warning);
+            //}
 
             return esValido;
         }
