@@ -43,7 +43,7 @@ namespace RegistroDetallado_PrestamoMoras.UI.Registros
         private bool Validar()
         {
             bool Validado = true;
-            if (ValorTextBox.Text.Length == 0)
+            if (MoraIdTextbox.Text.Length == 0)
             {
                 Validado = false;
                 MessageBox.Show("Transaccion Errada", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -63,18 +63,22 @@ namespace RegistroDetallado_PrestamoMoras.UI.Registros
             {
                 moras = encontrado;
                 Cargar();
-                // MessageBox.Show("Articulo Encontrado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show($"Esta Id de Articulo no fue encontrada.\n\nAsegurese que existe o cree una nueva.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Esta Id de Mora no fue encontrada.\n\nAsegurese que existe o cree una nueva.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Limpiar();
             }
         }
         //----------------------------------[ AGREGAR FILA - Registro Detallado ]----------------------------------
         private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
         {
-            moras.Detalle.Add(new Moras_Detalle(moras.MoraId, Convert.ToInt32(PrestamoIdDetalleComboBox), FechaMoraDatePicker.DisplayDate, Convert.ToSingle(ValorTextBox.Text)));
+            moras.Detalle.Add(new Moras_Detalle
+                (moras.MoraId,
+                Convert.ToInt32(PrestamoIdDetalleComboBox.SelectedValue),
+                //moras = (Moras)FechaMoraDatePicker.DisplayDate,
+                Convert.ToSingle(ValorTextBox.Text))
+                );
 
             Cargar();
 
@@ -108,7 +112,7 @@ namespace RegistroDetallado_PrestamoMoras.UI.Registros
                     MessageBox.Show("Transaccion Exitosa", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
-                    MessageBox.Show("Transaccion Errada", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Faltan Campos, por favor agregarlos", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

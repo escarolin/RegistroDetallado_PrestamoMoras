@@ -12,22 +12,23 @@ namespace RegistroDetallado_PrestamoMoras.Entidades
         public int MoraId { get; set; }
         public int PrestamoId { get; set; }
         public double Valor { get; set; }
-        public DateTime FechaD { get; set; }
+
+        [ForeignKey("Fecha")]
+        public Moras moras { get; set; } = new Moras();
+
         public Moras_Detalle()
         {
             IdDetalle = 0;
             MoraId = 0;
             PrestamoId = 0;
-            FechaD = DateTime.Now;
             Valor = 0;
         }
 
-        public Moras_Detalle(int moraId, int prestamoId, DateTime fechaMoraDetalle, float valor)
+        public Moras_Detalle(int moraId, int prestamoId, float valor)
         {
             IdDetalle = 0;
             MoraId = moraId;
             PrestamoId = prestamoId;
-            FechaD = FechaD;
             Valor = valor;
         }
     }

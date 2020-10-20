@@ -9,7 +9,7 @@ using RegistroDetallado_PrestamoMoras.DAL;
 namespace RegistroDetallado_PrestamoMoras.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201017165224_Inicial")]
+    [Migration("20201020005252_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,8 +41,8 @@ namespace RegistroDetallado_PrestamoMoras.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("FechaD")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("Fecha")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MoraId")
                         .HasColumnType("INTEGER");
@@ -57,6 +57,8 @@ namespace RegistroDetallado_PrestamoMoras.Migrations
                         .HasColumnType("REAL");
 
                     b.HasKey("IdDetalle");
+
+                    b.HasIndex("Fecha");
 
                     b.HasIndex("MoraId");
 
@@ -113,6 +115,10 @@ namespace RegistroDetallado_PrestamoMoras.Migrations
 
             modelBuilder.Entity("RegistroDetallado_PrestamoMoras.Entidades.Moras_Detalle", b =>
                 {
+                    b.HasOne("RegistroDetallado_PrestamoMoras.Entidades.Moras", "moras")
+                        .WithMany()
+                        .HasForeignKey("Fecha");
+
                     b.HasOne("RegistroDetallado_PrestamoMoras.Entidades.Moras", null)
                         .WithMany("Detalle")
                         .HasForeignKey("MoraId")

@@ -24,7 +24,7 @@
 
             <!--Fecha-->
             <Label Content="Fecha Mora" FontWeight="Bold" FontSize="13"/>
-            <DatePicker x:Name="FechaMoraDatePicker" SelectedDate="{Binding FechaMora}" FontSize="13" SelectedDateFormat="Short" VerticalContentAlignment="Center"/>
+            <DatePicker x:Name="FechaMoraDatePicker" SelectedDate="{Binding Fecha}" FontSize="13" SelectedDateFormat="Short" VerticalContentAlignment="Center"/>
 
             <!--Detalle-->
             <StackPanel Orientation="Vertical">
@@ -56,7 +56,7 @@
 
                                 <DataGridTextColumn Header="PrestamoId" Binding="{Binding PrestamoId}"/>
 
-                                <DataGridTextColumn Header="FechaMora" Binding="{Binding FechaMoraDetalle}"/>
+                                <DataGridTextColumn Header="FechaMora" Binding="{Binding moras.Fecha}"/>
                                 <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
                             </DataGrid.Columns>
                         </DataGrid>

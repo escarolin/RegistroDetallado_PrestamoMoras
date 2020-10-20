@@ -62,12 +62,18 @@ namespace RegistroDetallado_PrestamoMoras.Migrations
                     MoraId = table.Column<int>(nullable: false),
                     PrestamoId = table.Column<int>(nullable: false),
                     Valor = table.Column<double>(nullable: false),
-                    FechaD = table.Column<DateTime>(nullable: false),
+                    Fecha = table.Column<int>(nullable: true),
                     PersonaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Moras_Detalle", x => x.IdDetalle);
+                    table.ForeignKey(
+                        name: "FK_Moras_Detalle_Moras_Fecha",
+                        column: x => x.Fecha,
+                        principalTable: "Moras",
+                        principalColumn: "MoraId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Moras_Detalle_Moras_MoraId",
                         column: x => x.MoraId,
@@ -81,6 +87,11 @@ namespace RegistroDetallado_PrestamoMoras.Migrations
                         principalColumn: "PrestamoId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Moras_Detalle_Fecha",
+                table: "Moras_Detalle",
+                column: "Fecha");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Moras_Detalle_MoraId",
